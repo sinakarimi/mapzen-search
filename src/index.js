@@ -1,11 +1,13 @@
 import fetch from 'isomorphic-unfetch'
 import qs from 'query-string'
 import find from 'lodash/fp/find'
+import intersection from 'lodash/fp/intersection'
 import keys from 'lodash/fp/keys'
 import omit from 'lodash/fp/omit'
 
 const HOST = 'https://search.mapzen.com/v1'
 const SEARCH_ENDPOINT = `${HOST}/search`
+const STRUCTURED_SEARCH_ENDPOINT = `${HOST}/search/structured`
 const AUTOCOMPLETE_ENDPOINT = `${HOST}/autocomplete`
 const REVERSE_ENDPOINT = `${HOST}/reverse`
 const VALID_OPTIONS = [
@@ -24,6 +26,16 @@ const VALID_OPTIONS = [
   'size',
 ]
 const REQUIRED_OPTS = ['apiKey', 'text', 'point.lat', 'point.lon']
+const STRUCTURED_SEARCH_OPTS = [
+  'address',
+  'neighbourhood',
+  'borough',
+  'locality',
+  'county',
+  'region',
+  'postalcode',
+  'country',
+]
 
 const optionValidator = buildOptionValidator(VALID_OPTIONS)
 
@@ -36,6 +48,7 @@ export default function mapzenSearch(apiKey) {
   return {
     autocomplete: autocomplete(apiKey),
     search: search(apiKey),
+    structuredSearch: structuredSearch(apiKey),
     reverse: reverse(apiKey),
   }
 }
@@ -96,6 +109,41 @@ function search(apiKey) {
       },
     )
     const url = buildUrl(SEARCH_ENDPOINT, reqOptions)
+    return fetch(url)
+      .then(checkStatus)
+      .then(response => response.json())
+  }
+}
+
+function structuredSearch(apiKey) {
+  return options => {
+    const optionKeys = keys(options)
+    const validOptions = intersection(optionKeys)(STRUCTURED_SEARCH_OPTS)
+    const hasSomeOptions = validOptions.length > 0
+    if (!hasSomeOptions) {
+      return Promise.reject(
+        new Error('at least one structured search parameter is required')
+      )
+    }
+
+    const omitList = REQUIRED_OPTS.concat(STRUCTURED_SEARCH_OPTS)
+    const restOptions = omit(omitList)(options)
+    const invalidOption = findInvalidOption(restOptions)
+
+    if (invalidOption) {
+      return Promise.reject(
+        new Error(`Invalid option '${invalidOption}' supplied to search`)
+      )
+    }
+
+    const reqOptions = Object.assign(
+      {},
+      options,
+      {
+        api_key: apiKey,
+      },
+    )
+    const url = buildUrl(STRUCTURED_SEARCH_ENDPOINT, reqOptions)
     return fetch(url)
       .then(checkStatus)
       .then(response => response.json())

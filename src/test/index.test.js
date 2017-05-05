@@ -2,9 +2,10 @@ import nock from 'nock'
 import omit from 'lodash/fp/omit'
 import mapzenSearch from '../'
 import {
-  searchResponses,
   autocompleteResponses,
   reverseResponses,
+  searchResponses,
+  structuredSearchResponses,
 } from './fixtures'
 
 const scope = nock('https://search.mapzen.com/v1')
@@ -20,6 +21,7 @@ describe('mapzen-search', () => {
     const mz = mapzenSearch('api-key')
     expect(mz).toHaveProperty('autocomplete')
     expect(mz).toHaveProperty('search')
+    expect(mz).toHaveProperty('structuredSearch')
     expect(mz).toHaveProperty('reverse')
   })
 })
@@ -77,6 +79,67 @@ describe('search', () => {
     return mz.search({
       text,
     }).catch(e => {
+      expect(e.message).toMatch('OMG, bad things happened!')
+    })
+  })
+})
+
+describe('searchStructured', () => {
+  const validOpts = {
+    locality: 'London'
+  }
+  it('should error if missing all options', () => {
+    expect.assertions(1)
+    const mz = mapzenSearch('api-key')
+    return mz.structuredSearch({}).catch(e => {
+      expect(e.message).toMatch('at least one structured search parameter is required')
+    })
+  })
+
+  validatesOptions('structuredSearch', validOpts)
+
+  it('should handle successful response', () => {
+    expect.assertions(1)
+    const matchQuery = Object.assign(
+      {},
+      validOpts,
+      {
+        api_key: 'api-key',
+      }
+    )
+    const response = structuredSearchResponses['London']
+
+    scope
+      .get('/search/structured')
+      .query(matchQuery)
+      .reply(200, response)
+
+    const mz = mapzenSearch('api-key')
+    return mz.structuredSearch(validOpts).then(data => {
+      expect(data).toMatchObject(response)
+    })
+  })
+
+  it('should handle error response', () => {
+    expect.assertions(1)
+    const matchQuery = Object.assign(
+      {},
+      validOpts,
+      {
+        api_key: 'api-key',
+      }
+    )
+    const response = structuredSearchResponses['London']
+
+    scope
+      .get('/search/structured')
+      .query(matchQuery)
+      .replyWithError({
+        message: 'OMG, bad things happened!',
+      })
+
+    const mz = mapzenSearch('api-key')
+    return mz.structuredSearch(validOpts).catch(e => {
       expect(e.message).toMatch('OMG, bad things happened!')
     })
   })

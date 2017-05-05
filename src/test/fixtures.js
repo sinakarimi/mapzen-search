@@ -399,6 +399,189 @@ export const searchResponses = {
   }
 }
 
+export const structuredSearchResponses = {
+  'London': {
+    "geocoding": {
+      "version": "0.2",
+      "attribution": "https://search.mapzen.com/v1/attribution",
+      "query": {
+        "parsed_text": {
+          "city": "london"
+        },
+        "size": 10,
+        "private": false,
+        "lang": {
+          "name": "English",
+          "iso6391": "en",
+          "iso6393": "eng",
+          "defaulted": false
+        },
+        "querySize": 20
+      },
+      "engine": {
+        "name": "Pelias",
+        "author": "Mapzen",
+        "version": "1.0"
+      },
+      "timestamp": 1493967327736
+    },
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -0.099076,
+            51.509648
+          ]
+        },
+        "properties": {
+          "id": "101750367",
+          "gid": "whosonfirst:locality:101750367",
+          "layer": "locality",
+          "source": "whosonfirst",
+          "source_id": "101750367",
+          "name": "London",
+          "confidence": 1,
+          "match_type": "exact",
+          "accuracy": "centroid",
+          "country": "United Kingdom",
+          "country_gid": "whosonfirst:country:85633159",
+          "country_a": "GBR",
+          "macroregion": "England",
+          "macroregion_gid": "whosonfirst:macroregion:404227469",
+          "region": "City of Westminster",
+          "region_gid": "whosonfirst:region:85684061",
+          "locality": "London",
+          "locality_gid": "whosonfirst:locality:101750367",
+          "label": "London, England, United Kingdom"
+        },
+        "bbox": [
+          -0.4984345,
+          51.297207,
+          0.27894,
+          51.6843015
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -81.235184,
+            42.959033
+          ]
+        },
+        "properties": {
+          "id": "101735809",
+          "gid": "whosonfirst:locality:101735809",
+          "layer": "locality",
+          "source": "whosonfirst",
+          "source_id": "101735809",
+          "name": "London",
+          "confidence": 1,
+          "match_type": "exact",
+          "accuracy": "centroid",
+          "country": "Canada",
+          "country_gid": "whosonfirst:country:85633041",
+          "country_a": "CAN",
+          "region": "Ontario",
+          "region_gid": "whosonfirst:region:85682057",
+          "region_a": "ON",
+          "locality": "London",
+          "locality_gid": "whosonfirst:locality:101735809",
+          "label": "London, ON, Canada"
+        },
+        "bbox": [
+          -81.3906556,
+          42.8245154,
+          -81.1070784,
+          43.0730469
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.444225,
+            39.891236
+          ]
+        },
+        "properties": {
+          "id": "101712871",
+          "gid": "whosonfirst:locality:101712871",
+          "layer": "locality",
+          "source": "whosonfirst",
+          "source_id": "101712871",
+          "name": "London",
+          "confidence": 1,
+          "match_type": "exact",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "Ohio",
+          "region_gid": "whosonfirst:region:85688485",
+          "region_a": "OH",
+          "county": "Madison County",
+          "county_gid": "whosonfirst:county:102084757",
+          "localadmin": "London",
+          "localadmin_gid": "whosonfirst:localadmin:404526025",
+          "locality": "London",
+          "locality_gid": "whosonfirst:locality:101712871",
+          "label": "London, OH, USA"
+        },
+        "bbox": [
+          -83.478884,
+          39.857906,
+          -83.389997,
+          39.918891
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -84.08326,
+            37.12898
+          ]
+        },
+        "properties": {
+          "id": "4298960",
+          "gid": "geonames:locality:4298960",
+          "layer": "locality",
+          "source": "geonames",
+          "source_id": "4298960",
+          "name": "London",
+          "confidence": 1,
+          "match_type": "exact",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "Kentucky",
+          "region_gid": "whosonfirst:region:85688641",
+          "region_a": "KY",
+          "county": "Laurel County",
+          "county_gid": "whosonfirst:county:102084393",
+          "locality": "London",
+          "locality_gid": "geonames:locality:4298960",
+          "label": "London, KY, USA"
+        }
+      }
+    ],
+    "bbox": [
+      -84.08326,
+      37.12898,
+      0.27894,
+      51.6843015
+    ]
+  }
+}
+
 export const autocompleteResponses = {
   Coll: {
     "geocoding": {
