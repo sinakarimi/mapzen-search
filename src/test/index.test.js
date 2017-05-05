@@ -2,6 +2,7 @@ import nock from 'nock'
 import mapzenSearch from '../'
 import {
   searchResponses,
+  autocompleteResponses,
 } from './fixtures'
 
 const scope = nock('https://search.mapzen.com/v1')
@@ -68,6 +69,61 @@ describe('search', () => {
 
     const mz = mapzenSearch('api-key')
     return mz.search({
+      text,
+    }).catch(e => {
+      expect(e.message).toMatch('OMG, bad things happened!')
+    })
+  })
+})
+
+describe('autocomplete', () => {
+  it('should error if missing `text` option', () => {
+    expect.assertions(1)
+    const mz = mapzenSearch('api-key')
+    return mz.autocomplete({}).catch(e => {
+      expect(e.message).toMatch('`text` option not specified for autocomplete')
+    })
+  })
+  validatesOptions('autocomplete', {
+    text: 'Coll',
+  })
+  it('should handle successful response', () => {
+    expect.assertions(1)
+    const text = 'Coll'
+    const response = autocompleteResponses[text]
+
+    scope
+      .get('/autocomplete')
+      .query({
+        api_key: 'api-key',
+        text,
+      })
+      .reply(200, response)
+
+    const mz = mapzenSearch('api-key')
+    return mz.autocomplete({
+      text,
+    }).then(data => {
+      expect(data).toMatchObject(response)
+    })
+  })
+  it('should handle error response', () => {
+    expect.assertions(1)
+    const text = 'Melbourne'
+    const response = autocompleteResponses[text]
+
+    scope
+      .get('/autocomplete')
+      .query({
+        api_key: 'api-key',
+        text,
+      })
+      .replyWithError({
+        message: 'OMG, bad things happened!',
+      })
+
+    const mz = mapzenSearch('api-key')
+    return mz.autocomplete({
       text,
     }).catch(e => {
       expect(e.message).toMatch('OMG, bad things happened!')

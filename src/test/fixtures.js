@@ -1,3 +1,8 @@
+/**
+ * Fixtures
+ * Mock Responses from mapzen, created using live API
+ */
+
 export const searchResponses = {
   'Melbourne': {
     "geocoding": {
@@ -390,6 +395,372 @@ export const searchResponses = {
       -37.8648306834,
       144.990094688,
       52.8219
+    ]
+  }
+}
+
+export const autocompleteResponses = {
+  Coll: {
+    "geocoding": {
+      "version": "0.2",
+      "attribution": "https://search.mapzen.com/v1/attribution",
+      "query": {
+        "text": "Coll",
+        "tokens": [
+          "Coll"
+        ],
+        "size": 10,
+        "private": false,
+        "lang": {
+          "name": "English",
+          "iso6391": "en",
+          "iso6393": "eng",
+          "defaulted": true
+        }
+      },
+      "engine": {
+        "name": "Pelias",
+        "author": "Mapzen",
+        "version": "1.0"
+      },
+      "timestamp": 1493965528507
+    },
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -96.57237,
+            33.18791
+          ]
+        },
+        "properties": {
+          "id": "4682500",
+          "gid": "geonames:county:4682500",
+          "layer": "county",
+          "source": "geonames",
+          "source_id": "4682500",
+          "name": "Collin County",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "Texas",
+          "region_gid": "whosonfirst:region:85688753",
+          "region_a": "TX",
+          "county": "Collin County",
+          "county_gid": "whosonfirst:county:102086765",
+          "label": "Collin County, TX, USA"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.18346,
+            8.006149
+          ]
+        },
+        "properties": {
+          "id": "85668807",
+          "gid": "whosonfirst:region:85668807",
+          "layer": "region",
+          "source": "whosonfirst",
+          "source_id": "85668807",
+          "name": "Collines",
+          "accuracy": "centroid",
+          "country": "Benin",
+          "country_gid": "whosonfirst:country:85632247",
+          "country_a": "BEN",
+          "region": "Collines",
+          "region_gid": "whosonfirst:region:85668807",
+          "label": "Collines, Benin"
+        },
+        "bbox": [
+          1.60106978454,
+          7.42603282336,
+          2.74477258269,
+          8.77667389608
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.16667,
+            8
+          ]
+        },
+        "properties": {
+          "id": "2597272",
+          "gid": "geonames:region:2597272",
+          "layer": "region",
+          "source": "geonames",
+          "source_id": "2597272",
+          "name": "Collines Department",
+          "accuracy": "centroid",
+          "country": "Benin",
+          "country_gid": "whosonfirst:country:85632247",
+          "country_a": "BEN",
+          "region": "Collines",
+          "region_gid": "whosonfirst:region:85668807",
+          "label": "Collines Department, Benin"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -81.38097,
+            26.09924
+          ]
+        },
+        "properties": {
+          "id": "4151550",
+          "gid": "geonames:county:4151550",
+          "layer": "county",
+          "source": "geonames",
+          "source_id": "4151550",
+          "name": "Collier County",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "Florida",
+          "region_gid": "whosonfirst:region:85688651",
+          "region_a": "FL",
+          "county": "Collier County",
+          "county_gid": "whosonfirst:county:102085853",
+          "label": "Collier County, FL, USA"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -73.841567,
+            40.780997
+          ]
+        },
+        "properties": {
+          "id": "85811813",
+          "gid": "whosonfirst:neighbourhood:85811813",
+          "layer": "neighbourhood",
+          "source": "whosonfirst",
+          "source_id": "85811813",
+          "name": "College Point",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "New York",
+          "region_gid": "whosonfirst:region:85688543",
+          "region_a": "NY",
+          "county": "Queens County",
+          "county_gid": "whosonfirst:county:102082377",
+          "locality": "New York",
+          "locality_gid": "whosonfirst:locality:85977539",
+          "borough": "Queens",
+          "borough_gid": "whosonfirst:borough:421205767",
+          "neighbourhood": "College Point",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85811813",
+          "label": "College Point, Queens, New York, NY, USA"
+        },
+        "bbox": [
+          -73.859529092,
+          40.765057,
+          -73.8244498103,
+          40.7985084325
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -96.804615,
+            33.188622
+          ]
+        },
+        "properties": {
+          "id": "85811845",
+          "gid": "whosonfirst:neighbourhood:85811845",
+          "layer": "neighbourhood",
+          "source": "whosonfirst",
+          "source_id": "85811845",
+          "name": "Collin",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "Texas",
+          "region_gid": "whosonfirst:region:85688753",
+          "region_a": "TX",
+          "county": "Collin County",
+          "county_gid": "whosonfirst:county:102086765",
+          "locality": "Frisco",
+          "locality_gid": "whosonfirst:locality:101724387",
+          "neighbourhood": "Collin",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85811845",
+          "label": "Collin, Frisco, TX, USA"
+        },
+        "bbox": [
+          -96.840381,
+          33.15265,
+          -96.795872,
+          33.219392
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -71.404455,
+            41.828571
+          ]
+        },
+        "properties": {
+          "id": "85867163",
+          "gid": "whosonfirst:neighbourhood:85867163",
+          "layer": "neighbourhood",
+          "source": "whosonfirst",
+          "source_id": "85867163",
+          "name": "College Hill",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "Rhode Island",
+          "region_gid": "whosonfirst:region:85688509",
+          "region_a": "RI",
+          "county": "Providence County",
+          "county_gid": "whosonfirst:county:102081597",
+          "localadmin": "Providence",
+          "localadmin_gid": "whosonfirst:localadmin:404488375",
+          "locality": "Providence",
+          "locality_gid": "whosonfirst:locality:101720567",
+          "neighbourhood": "College Hill",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85867163",
+          "label": "College Hill, Providence, RI, USA"
+        },
+        "bbox": [
+          -71.411636,
+          41.822842,
+          -71.392166,
+          41.844398
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.151208,
+            37.421614
+          ]
+        },
+        "properties": {
+          "id": "85811817",
+          "gid": "whosonfirst:neighbourhood:85811817",
+          "layer": "neighbourhood",
+          "source": "whosonfirst",
+          "source_id": "85811817",
+          "name": "College Terrace",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "California",
+          "region_gid": "whosonfirst:region:85688637",
+          "region_a": "CA",
+          "county": "Santa Clara County",
+          "county_gid": "whosonfirst:county:102081673",
+          "locality": "Palo Alto",
+          "locality_gid": "whosonfirst:locality:85922351",
+          "neighbourhood": "College Terrace",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85811817",
+          "label": "College Terrace, Palo Alto, CA, USA"
+        },
+        "bbox": [
+          -122.1741,
+          37.405538,
+          -122.13805,
+          37.43345
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -105.08442,
+            40.58526
+          ]
+        },
+        "properties": {
+          "id": "5577147",
+          "gid": "geonames:locality:5577147",
+          "layer": "locality",
+          "source": "geonames",
+          "source_id": "5577147",
+          "name": "Fort Collins",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "Colorado",
+          "region_gid": "whosonfirst:region:85688603",
+          "region_a": "CO",
+          "county": "Larimer County",
+          "county_gid": "whosonfirst:county:102083353",
+          "locality": "Fort Collins",
+          "locality_gid": "geonames:locality:5577147",
+          "label": "Fort Collins, CO, USA"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -105.06586,
+            40.54877
+          ]
+        },
+        "properties": {
+          "id": "7173444",
+          "gid": "geonames:localadmin:7173444",
+          "layer": "localadmin",
+          "source": "geonames",
+          "source_id": "7173444",
+          "name": "City of Fort Collins",
+          "accuracy": "centroid",
+          "country": "United States",
+          "country_gid": "whosonfirst:country:85633793",
+          "country_a": "USA",
+          "region": "Colorado",
+          "region_gid": "whosonfirst:region:85688603",
+          "region_a": "CO",
+          "county": "Larimer County",
+          "county_gid": "whosonfirst:county:102083353",
+          "localadmin": "City of Fort Collins",
+          "localadmin_gid": "geonames:localadmin:7173444",
+          "label": "City of Fort Collins, CO, USA"
+        }
+      }
+    ],
+    "bbox": [
+      -122.1741,
+      7.42603282336,
+      2.74477258269,
+      41.844398
     ]
   }
 }
