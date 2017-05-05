@@ -764,3 +764,445 @@ export const autocompleteResponses = {
     ]
   }
 }
+
+export const reverseResponses = {
+  '48.858268-2.294471': {
+    "geocoding": {
+      "version": "0.2",
+      "attribution": "https://search.mapzen.com/v1/attribution",
+      "query": {
+        "size": 10,
+        "private": false,
+        "point.lat": 48.858268,
+        "point.lon": 2.294471,
+        "boundary.circle.radius": 1,
+        "boundary.circle.lat": 48.858268,
+        "boundary.circle.lon": 2.294471,
+        "lang": {
+          "name": "English",
+          "iso6391": "en",
+          "iso6393": "eng",
+          "defaulted": false
+        },
+        "querySize": 20
+      },
+      "engine": {
+        "name": "Pelias",
+        "author": "Mapzen",
+        "version": "1.0"
+      },
+      "timestamp": 1493965930610
+    },
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.294501,
+            48.858262
+          ]
+        },
+        "properties": {
+          "id": "node:4013678139",
+          "gid": "openstreetmap:venue:node:4013678139",
+          "layer": "venue",
+          "source": "openstreetmap",
+          "source_id": "node:4013678139",
+          "name": "75056Y - A",
+          "confidence": 0.9,
+          "distance": 0.002,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "75056Y - A, Paris, France"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.294514,
+            48.858263
+          ]
+        },
+        "properties": {
+          "id": "way:5013364",
+          "gid": "openstreetmap:address:way:5013364",
+          "layer": "address",
+          "source": "openstreetmap",
+          "source_id": "way:5013364",
+          "name": "5 Avenue Anatole France",
+          "housenumber": "5",
+          "street": "Avenue Anatole France",
+          "postalcode": "75007",
+          "confidence": 0.9,
+          "distance": 0.003,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "5 Avenue Anatole France, Paris, France"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.294514,
+            48.858263
+          ]
+        },
+        "properties": {
+          "id": "way:5013364",
+          "gid": "openstreetmap:venue:way:5013364",
+          "layer": "venue",
+          "source": "openstreetmap",
+          "source_id": "way:5013364",
+          "name": "Tour Eiffel",
+          "housenumber": "5",
+          "street": "Avenue Anatole France",
+          "postalcode": "75007",
+          "confidence": 0.9,
+          "distance": 0.003,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "Tour Eiffel, Paris, France"
+        },
+        "bbox": [
+          2.293308,
+          48.857475,
+          2.29569,
+          48.859047
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.294531,
+            48.858291
+          ]
+        },
+        "properties": {
+          "id": "node:3134285383",
+          "gid": "openstreetmap:venue:node:3134285383",
+          "layer": "venue",
+          "source": "openstreetmap",
+          "source_id": "node:3134285383",
+          "name": "Bureau de Gustave Eiffel",
+          "confidence": 0.9,
+          "distance": 0.005,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "Bureau de Gustave Eiffel, Paris, France"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.29452,
+            48.85832
+          ]
+        },
+        "properties": {
+          "id": "6254976",
+          "gid": "geonames:venue:6254976",
+          "layer": "venue",
+          "source": "geonames",
+          "source_id": "6254976",
+          "name": "Tour Eiffel",
+          "confidence": 0.9,
+          "distance": 0.007,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "Tour Eiffel, Paris, France"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.294497,
+            48.858133
+          ]
+        },
+        "properties": {
+          "id": "node:3135278479",
+          "gid": "openstreetmap:venue:node:3135278479",
+          "layer": "venue",
+          "source": "openstreetmap",
+          "source_id": "node:3135278479",
+          "name": "Le Jules Verne",
+          "street": "Avenue Gustave Eiffel",
+          "postalcode": "75007",
+          "confidence": 0.8,
+          "distance": 0.015,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "Le Jules Verne, Paris, France"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.29424,
+            48.858262
+          ]
+        },
+        "properties": {
+          "id": "node:3135214938",
+          "gid": "openstreetmap:venue:node:3135214938",
+          "layer": "venue",
+          "source": "openstreetmap",
+          "source_id": "node:3135214938",
+          "name": "Buffets",
+          "confidence": 0.8,
+          "distance": 0.017,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "Buffets, Paris, France"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.294254,
+            48.858386
+          ]
+        },
+        "properties": {
+          "id": "way:308145239",
+          "gid": "openstreetmap:venue:way:308145239",
+          "layer": "venue",
+          "source": "openstreetmap",
+          "source_id": "way:308145239",
+          "name": "58 tour Eiffel",
+          "confidence": 0.8,
+          "distance": 0.021,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "58 tour Eiffel, Paris, France"
+        },
+        "bbox": [
+          2.29407,
+          48.858282,
+          2.29446,
+          48.858541
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.294265,
+            48.858078
+          ]
+        },
+        "properties": {
+          "id": "way:308145259",
+          "gid": "openstreetmap:venue:way:308145259",
+          "layer": "venue",
+          "source": "openstreetmap",
+          "source_id": "way:308145259",
+          "name": "pavillon Ferrié",
+          "confidence": 0.8,
+          "distance": 0.026,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "pavillon Ferrié, Paris, France"
+        },
+        "bbox": [
+          2.294065,
+          48.857979,
+          2.294442,
+          48.858226
+        ]
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.294742,
+            48.858398
+          ]
+        },
+        "properties": {
+          "id": "way:308145258",
+          "gid": "openstreetmap:venue:way:308145258",
+          "layer": "venue",
+          "source": "openstreetmap",
+          "source_id": "way:308145258",
+          "name": "pavillon Eiffel",
+          "confidence": 0.8,
+          "distance": 0.025,
+          "accuracy": "point",
+          "country": "France",
+          "country_gid": "whosonfirst:country:85633147",
+          "country_a": "FRA",
+          "macroregion": "Île-De-France",
+          "macroregion_gid": "whosonfirst:macroregion:404227465",
+          "region": "Paris",
+          "region_gid": "whosonfirst:region:85683497",
+          "macrocounty": "1st Arrondissement",
+          "macrocounty_gid": "whosonfirst:macrocounty:404227749",
+          "county": "7th Arrondissement",
+          "county_gid": "whosonfirst:county:102068177",
+          "locality": "Paris",
+          "locality_gid": "whosonfirst:locality:101751119",
+          "neighbourhood": "Quartier du Gros-Caillou",
+          "neighbourhood_gid": "whosonfirst:neighbourhood:85873841",
+          "label": "pavillon Eiffel, Paris, France"
+        },
+        "bbox": [
+          2.294541,
+          48.858299,
+          2.294918,
+          48.858546
+        ]
+      }
+    ],
+    "bbox": [
+      2.293308,
+      48.857475,
+      2.29569,
+      48.859047
+    ]
+  }
+}

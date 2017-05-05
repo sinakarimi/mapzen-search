@@ -7,6 +7,7 @@ import omit from 'lodash/fp/omit'
 const HOST = 'https://search.mapzen.com/v1'
 const SEARCH_ENDPOINT = `${HOST}/search`
 const AUTOCOMPLETE_ENDPOINT = `${HOST}/autocomplete`
+const REVERSE_ENDPOINT = `${HOST}/reverse`
 const VALID_OPTIONS = [
   'focus.point.lat',
   'focus.point.lon',
@@ -22,6 +23,7 @@ const VALID_OPTIONS = [
   'boundary.country',
   'size',
 ]
+const REQUIRED_OPTS = ['apiKey', 'text', 'point.lat', 'point.lon']
 
 const optionValidator = buildOptionValidator(VALID_OPTIONS)
 
@@ -46,7 +48,7 @@ function autocomplete(apiKey) {
       )
     }
 
-    const restOptions = omit(['apiKey', 'text'])(options)
+    const restOptions = omit(REQUIRED_OPTS)(options)
     const invalidOption = findInvalidOption(restOptions)
 
     if (invalidOption) {
@@ -66,7 +68,6 @@ function autocomplete(apiKey) {
     return fetch(url)
       .then(checkStatus)
       .then(response => response.json())
-      .then(data => Promise.resolve(data))
   }
 }
 
@@ -78,7 +79,7 @@ function search(apiKey) {
       )
     }
 
-    const restOptions = omit(['apiKey', 'text'])(options)
+    const restOptions = omit(REQUIRED_OPTS)(options)
     const invalidOption = findInvalidOption(restOptions)
 
     if (invalidOption) {
@@ -98,12 +99,37 @@ function search(apiKey) {
     return fetch(url)
       .then(checkStatus)
       .then(response => response.json())
-      .then(data => Promise.resolve(data))
   }
 }
 
 function reverse(apiKey) {
   return options => {
+    if (!options['point.lat'] || !options['point.lon']) {
+      return Promise.reject(
+        new Error('`point.lat` and/or `point.lon` values not specified for reverse')
+      )
+    }
+
+    const restOptions = omit(REQUIRED_OPTS)(options)
+    const invalidOption = findInvalidOption(restOptions)
+
+    if (invalidOption) {
+      return Promise.reject(
+        new Error(`Invalid option '${invalidOption}' supplied to autocomplete`)
+      )
+    }
+
+    const reqOptions = Object.assign(
+      {},
+      options,
+      {
+        api_key: apiKey,
+      },
+    )
+    const url = buildUrl(REVERSE_ENDPOINT, reqOptions)
+    return fetch(url)
+      .then(checkStatus)
+      .then(response => response.json())
   }
 }
 

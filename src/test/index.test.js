@@ -1,8 +1,10 @@
 import nock from 'nock'
+import omit from 'lodash/fp/omit'
 import mapzenSearch from '../'
 import {
   searchResponses,
   autocompleteResponses,
+  reverseResponses,
 } from './fixtures'
 
 const scope = nock('https://search.mapzen.com/v1')
@@ -13,6 +15,7 @@ describe('mapzen-search', () => {
       mapzenSearch()
     }).toThrowError('API Key not specified')
   })
+
   it('should return object of available methods', () => {
     const mz = mapzenSearch('api-key')
     expect(mz).toHaveProperty('autocomplete')
@@ -29,9 +32,11 @@ describe('search', () => {
       expect(e.message).toMatch('`text` option not specified for search')
     })
   })
+
   validatesOptions('search', {
     text: 'Melbourne, Australia',
   })
+
   it('should handle successful response', () => {
     expect.assertions(1)
     const text = 'Melbourne'
@@ -52,6 +57,7 @@ describe('search', () => {
       expect(data).toMatchObject(response)
     })
   })
+
   it('should handle error response', () => {
     expect.assertions(1)
     const text = 'Melbourne'
@@ -84,9 +90,11 @@ describe('autocomplete', () => {
       expect(e.message).toMatch('`text` option not specified for autocomplete')
     })
   })
+
   validatesOptions('autocomplete', {
     text: 'Coll',
   })
+
   it('should handle successful response', () => {
     expect.assertions(1)
     const text = 'Coll'
@@ -107,6 +115,7 @@ describe('autocomplete', () => {
       expect(data).toMatchObject(response)
     })
   })
+
   it('should handle error response', () => {
     expect.assertions(1)
     const text = 'Melbourne'
@@ -126,6 +135,80 @@ describe('autocomplete', () => {
     return mz.autocomplete({
       text,
     }).catch(e => {
+      expect(e.message).toMatch('OMG, bad things happened!')
+    })
+  })
+
+})
+
+describe('reverse', () => {
+  const validOpts = {
+    'point.lat': 48.858268,
+    'point.lon': 2.294471,
+  }
+
+  it('should error if missing `point.lat` option', () => {
+    expect.assertions(1)
+    const mz = mapzenSearch('api-key')
+    const opts = omit('point.lat')(validOpts)
+    return mz.reverse(opts).catch(e => {
+      expect(e.message).toMatch('`point.lat` and/or `point.lon` values not specified for reverse')
+    })
+  })
+
+  it('should error if missing `point.lon` option', () => {
+    expect.assertions(1)
+    const mz = mapzenSearch('api-key')
+    const opts = omit('point.lon')(validOpts)
+    return mz.reverse(opts).catch(e => {
+      expect(e.message).toMatch('`point.lat` and/or `point.lon` values not specified for reverse')
+    })
+  })
+
+  validatesOptions('reverse', validOpts)
+
+  it('should handle successful response', () => {
+    expect.assertions(1)
+    const matchQuery = Object.assign(
+      {},
+      validOpts,
+      {
+        api_key: 'api-key',
+      }
+    )
+    const response = reverseResponses[`${validOpts['point.lat']}-${validOpts['point.lon']}`]
+
+    scope
+      .get('/reverse')
+      .query(matchQuery)
+      .reply(200, response)
+
+    const mz = mapzenSearch('api-key')
+    return mz.reverse(validOpts).then(data => {
+      expect(data).toMatchObject(response)
+    })
+  })
+
+  it('should handle error response', () => {
+    expect.assertions(1)
+    const matchQuery = Object.assign(
+      {},
+      validOpts,
+      {
+        api_key: 'api-key',
+      }
+    )
+    const response = reverseResponses[`${validOpts['point.lat']}-${validOpts['point.lon']}`]
+
+    scope
+      .get('/reverse')
+      .query(matchQuery)
+      .replyWithError({
+        message: 'OMG, bad things happened!',
+      })
+
+    const mz = mapzenSearch('api-key')
+    return mz.reverse(validOpts).catch(e => {
       expect(e.message).toMatch('OMG, bad things happened!')
     })
   })
