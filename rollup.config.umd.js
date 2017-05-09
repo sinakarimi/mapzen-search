@@ -14,7 +14,19 @@ export default {
       include: 'node_modules/**',
     }),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      presets: [
+        [
+          "es2015",
+          {
+            modules: false
+          }
+        ]
+      ],
+      plugins: [
+        "external-helpers"
+      ],
+      babelrc: false,
     })
   ],
   dest: 'build/bundle.js',
