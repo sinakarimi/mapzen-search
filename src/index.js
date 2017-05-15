@@ -1,4 +1,3 @@
-import 'isomorphic-unfetch'
 import qs from 'query-string'
 import find from 'lodash/fp/find'
 import intersection from 'lodash/fp/intersection'

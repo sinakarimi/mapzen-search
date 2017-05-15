@@ -1,3 +1,4 @@
+import 'isomorphic-unfetch'
 import nock from 'nock'
 import omit from 'lodash/fp/omit'
 import mapzenSearch from '../'
