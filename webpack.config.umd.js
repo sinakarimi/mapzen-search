@@ -28,7 +28,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new LodashModuleReplacementPlugin,
+    // https://github.com/lodash/lodash-webpack-plugin/issues/53
+    new LodashModuleReplacementPlugin({
+      currying: true,
+      flattening: true,
+      placeholders: true,
+    }),
     new webpack.optimize.UglifyJsPlugin,
   ]
 };
