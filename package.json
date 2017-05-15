@@ -3,11 +3,11 @@
   "version": "1.0.0-beta-3",
   "description": "Wrapper for the Mapzen Search API",
   "main": "build/bundle.js",
-  "module": "build/bundle.es2015.js",
+  "module": "src/index.js",
   "scripts": {
     "build": "yarn build:umd && yarn build:es",
-    "build:umd": "node_modules/.bin/rollup --config rollup.config.umd.js",
-    "build:es": "node_modules/.bin/rollup --config rollup.config.es.js",
+    "build:umd": "node_modules/.bin/webpack --config webpack.config.umd.js",
+    "build:es": "node_modules/.bin/babel src/index.js --out-file build/bundle.es2015.js",
     "prepublish": "yarn build",
     "test": "jest",
     "test:debug": "DEBUG=nock.* jest"
@@ -23,17 +23,15 @@
   },
   "homepage": "https://github.com/Lighthouse-io/mapzen-search#readme",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-jest": "^19.0.0",
-    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-lodash": "^3.2.11",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
-    "is-builtin-module": "^1.0.0",
     "jest": "^19.0.2",
+    "lodash-webpack-plugin": "^0.11.3",
     "nock": "^9.0.13",
-    "rollup": "^0.41.6",
-    "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0"
+    "webpack": "^2.5.1"
   },
   "dependencies": {
     "isomorphic-unfetch": "^1.0.0",

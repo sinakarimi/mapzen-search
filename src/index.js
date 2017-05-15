@@ -1,9 +1,10 @@
-import fetch from 'isomorphic-unfetch'
+import 'isomorphic-unfetch'
 import qs from 'query-string'
 import find from 'lodash/fp/find'
 import intersection from 'lodash/fp/intersection'
 import keys from 'lodash/fp/keys'
 import omit from 'lodash/fp/omit'
+import assign from 'lodash/assign'
 
 const HOST = 'https://search.mapzen.com/v1'
 const SEARCH_ENDPOINT = `${HOST}/search`
@@ -70,7 +71,7 @@ function autocomplete(apiKey) {
       )
     }
 
-    const reqOptions = Object.assign(
+    const reqOptions = assign(
       {},
       options,
       {
@@ -101,7 +102,7 @@ function search(apiKey) {
       )
     }
 
-    const reqOptions = Object.assign(
+    const reqOptions = assign(
       {},
       options,
       {
@@ -136,7 +137,7 @@ function structuredSearch(apiKey) {
       )
     }
 
-    const reqOptions = Object.assign(
+    const reqOptions = assign(
       {},
       options,
       {
@@ -167,7 +168,7 @@ function reverse(apiKey) {
       )
     }
 
-    const reqOptions = Object.assign(
+    const reqOptions = assign(
       {},
       options,
       {
