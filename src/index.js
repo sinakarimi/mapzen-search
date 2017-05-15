@@ -41,7 +41,6 @@ const STRUCTURED_SEARCH_OPTS = [
 const optionValidator = buildOptionValidator(VALID_OPTIONS)
 
 export default function mapzenSearch(apiKey) {
-
   if (!apiKey) {
     throw new Error('API Key not specified')
   }
