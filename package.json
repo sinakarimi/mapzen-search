@@ -2,12 +2,12 @@
   "name": "mapzen-search",
   "version": "1.0.0",
   "description": "Wrapper for the Mapzen Search API",
-  "main": "build/bundle.js",
-  "module": "src/index.js",
+  "main": "dist/mapzen-search.js",
+  "module": "lib/index.js",
   "scripts": {
     "build": "yarn build:umd && yarn build:es",
     "build:umd": "node_modules/.bin/webpack --config webpack.config.umd.js",
-    "build:es": "node_modules/.bin/babel src/index.js --out-file build/bundle.es2015.js",
+    "build:es": "node_modules/.bin/babel src --out-dir lib --ignore test --source-maps",
     "prepublish": "yarn build",
     "test": "jest",
     "test:debug": "DEBUG=nock.* jest"

@@ -1,12 +1,12 @@
 const path = require('path')
 const webpack = require('webpack')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
-const buildPath = path.join(__dirname, './build')
+const buildPath = path.join(__dirname, './dist')
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
+    filename: 'mapzen-search.js',
     path: buildPath,
     library: 'mapzenSearch',
     libraryTarget: 'umd',

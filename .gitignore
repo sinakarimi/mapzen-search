@@ -39,4 +39,5 @@ jspm_packages
 # OSX
 .DS_Store
 
-build
+lib
+dist
