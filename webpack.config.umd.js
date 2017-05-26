@@ -17,12 +17,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        options: {
-          babelrc: false,
-          presets: [
-            [ 'es2015', { modules: false } ]
-          ],
-        }
       }
     ]
   },
