@@ -27,6 +27,5 @@ module.exports = {
       flattening: true,
       placeholders: true,
     }),
-    new webpack.optimize.UglifyJsPlugin,
   ]
 };
