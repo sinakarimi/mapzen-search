@@ -9,6 +9,7 @@
     "build:umd": "node_modules/.bin/webpack --config webpack.config.umd.js",
     "build:es": "node_modules/.bin/babel src --out-dir lib --ignore test --source-maps",
     "prepublish": "yarn build",
+    "preversion": "yarn test",
     "test": "jest",
     "test:debug": "DEBUG=nock.* jest"
   },
