@@ -40,20 +40,24 @@ const STRUCTURED_SEARCH_OPTS = [
 
 const optionValidator = buildOptionValidator(VALID_OPTIONS)
 
-export default function mapzenSearch(apiKey) {
-  if (!apiKey) {
-    throw new Error('API Key not specified')
+export default function mapzenSearch(options) {
+  if (!options.fetch) {
+    throw new Error('`fetch` ponyfill option not specified')
+  }
+
+  if (!options.apiKey) {
+    throw new Error('`apiKey` option not specified')
   }
 
   return {
-    autocomplete: autocomplete(apiKey),
-    search: search(apiKey),
-    structuredSearch: structuredSearch(apiKey),
-    reverse: reverse(apiKey),
+    autocomplete: autocomplete(options),
+    search: search(options),
+    structuredSearch: structuredSearch(options),
+    reverse: reverse(options),
   }
 }
 
-function autocomplete(apiKey) {
+function autocomplete({ fetch, apiKey }) {
   return options => {
     if (!options.text) {
       return Promise.reject(
@@ -84,7 +88,7 @@ function autocomplete(apiKey) {
   }
 }
 
-function search(apiKey) {
+function search({ fetch, apiKey }) {
   return options => {
     if (!options.text) {
       return Promise.reject(
@@ -115,7 +119,7 @@ function search(apiKey) {
   }
 }
 
-function structuredSearch(apiKey) {
+function structuredSearch({ fetch, apiKey }) {
   return options => {
     const optionKeys = keys(options)
     const validOptions = intersection(optionKeys)(STRUCTURED_SEARCH_OPTS)
@@ -150,7 +154,7 @@ function structuredSearch(apiKey) {
   }
 }
 
-function reverse(apiKey) {
+function reverse({ fetch, apiKey }) {
   return options => {
     if (!options['point.lat'] || !options['point.lon']) {
       return Promise.reject(

@@ -1,4 +1,4 @@
-import 'isomorphic-unfetch'
+import fetch from 'node-fetch'
 import nock from 'nock'
 import omit from 'lodash/fp/omit'
 import mapzenSearch from '../'
@@ -12,14 +12,27 @@ import {
 const scope = nock('https://search.mapzen.com/v1')
 
 describe('mapzen-search', () => {
+  it('should validate fetch implementation', () => {
+    expect(() => {
+      mapzenSearch({
+        apiKey: '1234',
+      })
+    }).toThrowError('`fetch` ponyfill option not specified')
+  })
+
   it('should validate apiKey', () => {
     expect(() => {
-      mapzenSearch()
-    }).toThrowError('API Key not specified')
+      mapzenSearch({
+        fetch,
+      })
+    }).toThrowError('`apiKey` option not specified')
   })
 
   it('should return object of available methods', () => {
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     expect(mz).toHaveProperty('autocomplete')
     expect(mz).toHaveProperty('search')
     expect(mz).toHaveProperty('structuredSearch')
@@ -30,7 +43,10 @@ describe('mapzen-search', () => {
 describe('search', () => {
   it('should error if missing `text` option', () => {
     expect.assertions(1)
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.search({}).catch(e => {
       expect(e.message).toMatch('`text` option not specified for search')
     })
@@ -53,7 +69,10 @@ describe('search', () => {
       })
       .reply(200, response)
 
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.search({
       text,
     }).then(data => {
@@ -76,7 +95,10 @@ describe('search', () => {
         message: 'OMG, bad things happened!',
       })
 
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.search({
       text,
     }).catch(e => {
@@ -91,7 +113,10 @@ describe('searchStructured', () => {
   }
   it('should error if missing all options', () => {
     expect.assertions(1)
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.structuredSearch({}).catch(e => {
       expect(e.message).toMatch('at least one structured search parameter is required')
     })
@@ -115,7 +140,10 @@ describe('searchStructured', () => {
       .query(matchQuery)
       .reply(200, response)
 
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.structuredSearch(validOpts).then(data => {
       expect(data).toMatchObject(response)
     })
@@ -139,7 +167,10 @@ describe('searchStructured', () => {
         message: 'OMG, bad things happened!',
       })
 
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.structuredSearch(validOpts).catch(e => {
       expect(e.message).toMatch('OMG, bad things happened!')
     })
@@ -149,7 +180,10 @@ describe('searchStructured', () => {
 describe('autocomplete', () => {
   it('should error if missing `text` option', () => {
     expect.assertions(1)
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.autocomplete({}).catch(e => {
       expect(e.message).toMatch('`text` option not specified for autocomplete')
     })
@@ -172,7 +206,10 @@ describe('autocomplete', () => {
       })
       .reply(200, response)
 
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.autocomplete({
       text,
     }).then(data => {
@@ -195,7 +232,10 @@ describe('autocomplete', () => {
         message: 'OMG, bad things happened!',
       })
 
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.autocomplete({
       text,
     }).catch(e => {
@@ -214,7 +254,10 @@ describe('reverse', () => {
 
   it('should error if missing `point.lat` option', () => {
     expect.assertions(1)
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     const opts = omit('point.lat')(validOpts)
     return mz.reverse(opts).catch(e => {
       expect(e.message).toMatch('`point.lat` and/or `point.lon` values not specified for reverse')
@@ -223,7 +266,10 @@ describe('reverse', () => {
 
   it('should error if missing `point.lon` option', () => {
     expect.assertions(1)
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     const opts = omit('point.lon')(validOpts)
     return mz.reverse(opts).catch(e => {
       expect(e.message).toMatch('`point.lat` and/or `point.lon` values not specified for reverse')
@@ -248,7 +294,10 @@ describe('reverse', () => {
       .query(matchQuery)
       .reply(200, response)
 
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.reverse(validOpts).then(data => {
       expect(data).toMatchObject(response)
     })
@@ -272,7 +321,10 @@ describe('reverse', () => {
         message: 'OMG, bad things happened!',
       })
 
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     return mz.reverse(validOpts).catch(e => {
       expect(e.message).toMatch('OMG, bad things happened!')
     })
@@ -282,7 +334,10 @@ describe('reverse', () => {
 function validatesOptions(method, defaultOpts, errorMessage) {
   it(`should error for invalid options on ${method}`, () => {
     expect.assertions(1)
-    const mz = mapzenSearch('api-key')
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      fetch,
+    })
     const options = Object.assign(
       {},
       defaultOpts,
