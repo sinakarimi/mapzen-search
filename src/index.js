@@ -1,5 +1,6 @@
 import qs from 'query-string'
 import find from 'lodash/fp/find'
+import includes from 'lodash/fp/includes'
 import intersection from 'lodash/fp/intersection'
 import keys from 'lodash/fp/keys'
 import omit from 'lodash/fp/omit'
@@ -204,7 +205,7 @@ function findInvalidOption(options) {
 
 function buildOptionValidator(validOptions) {
   return option => {
-    const validOption = find(option)(validOptions)
+    const validOption = includes(option)(validOptions)
     return !validOption
   }
 }

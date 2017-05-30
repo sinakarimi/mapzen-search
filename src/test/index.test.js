@@ -209,6 +209,7 @@ describe('reverse', () => {
   const validOpts = {
     'point.lat': 48.858268,
     'point.lon': 2.294471,
+    size: 2,
   }
 
   it('should error if missing `point.lat` option', () => {
