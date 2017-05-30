@@ -162,7 +162,7 @@ function reverse(apiKey) {
 
     if (invalidOption) {
       return Promise.reject(
-        new Error(`Invalid option '${invalidOption}' supplied to autocomplete`)
+        new Error(`Invalid option '${invalidOption}' supplied to reverse`)
       )
     }
 
