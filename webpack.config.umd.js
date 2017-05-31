@@ -26,7 +26,6 @@ module.exports = {
       currying: true,
       flattening: true,
       placeholders: true,
-      shorthands: true,
     }),
   ]
 };
