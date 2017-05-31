@@ -8,6 +8,7 @@ JavaScript wrapper for the Mapzen Search API
 
 ```
 npm install --save mapzen-search
+```
 
 ## Getting started
 
