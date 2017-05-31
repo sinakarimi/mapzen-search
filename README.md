@@ -11,11 +11,14 @@ npm install --save mapzen-search
 
 ## Getting started
 
-Import module and set API Key
+Import module and pass required options...
 
 ```
 import mapzenSearch from 'mapzen-search'
-const mz = mapzenSearch('your-mapzen-api-key')
+const mz = mapzenSearch({
+  apiKey: 'your-mapzen-api-key',
+  fetch: window.fetch, // or any compliant ponyfill (e.g. https://github.com/developit/unfetch)
+})
 ```
 
 The following methods are available. See [Mapzen Documentation](https://mapzen.com/documentation/search/) for available options.
