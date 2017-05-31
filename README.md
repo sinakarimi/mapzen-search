@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/mapzen-search.png)](https://npmjs.org/package/mapzen-search)
+
 [![CircleCI](https://circleci.com/gh/Lighthouse-io/mapzen-search.svg?style=svg)](https://circleci.com/gh/Lighthouse-io/mapzen-search)
 
 # Mapzen Search
