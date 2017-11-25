@@ -6,11 +6,7 @@ import keys from 'lodash/fp/keys'
 import omit from 'lodash/fp/omit'
 import assign from 'lodash/assign'
 
-const HOST = 'https://search.mapzen.com/v1'
-const SEARCH_ENDPOINT = `${HOST}/search`
-const STRUCTURED_SEARCH_ENDPOINT = `${HOST}/search/structured`
-const AUTOCOMPLETE_ENDPOINT = `${HOST}/autocomplete`
-const REVERSE_ENDPOINT = `${HOST}/reverse`
+const DEFAULT_HOST = 'https://search.mapzen.com/v1'
 const VALID_OPTIONS = [
   'focus.point.lat',
   'focus.point.lon',
@@ -24,7 +20,7 @@ const VALID_OPTIONS = [
   'sources',
   'layers',
   'boundary.country',
-  'size',
+  'size'
 ]
 const REQUIRED_OPTS = ['apiKey', 'text', 'point.lat', 'point.lon']
 const STRUCTURED_SEARCH_OPTS = [
@@ -57,7 +53,7 @@ export default function mapzenSearch(options) {
   }
 }
 
-function autocomplete({ fetch, apiKey }) {
+function autocomplete({ fetch, apiKey, autocompleteHost }) {
   return options => {
     if (!options.text) {
       return Promise.reject(
@@ -81,14 +77,16 @@ function autocomplete({ fetch, apiKey }) {
         api_key: apiKey,
       },
     )
-    const url = buildUrl(AUTOCOMPLETE_ENDPOINT, reqOptions)
+    const host = autocompleteHost || DEFAULT_HOST
+    const endpoint = getAutocompleteEndpoint(host)
+    const url = buildUrl(endpoint, reqOptions)
     return fetch(url)
       .then(checkStatus)
       .then(response => response.json())
   }
 }
 
-function search({ fetch, apiKey }) {
+function search({ fetch, apiKey, searchHost }) {
   return options => {
     if (!options.text) {
       return Promise.reject(
@@ -112,14 +110,16 @@ function search({ fetch, apiKey }) {
         api_key: apiKey,
       },
     )
-    const url = buildUrl(SEARCH_ENDPOINT, reqOptions)
+    const host = searchHost || DEFAULT_HOST
+    const endpoint = getSearchEndpoint(host)
+    const url = buildUrl(endpoint, reqOptions)
     return fetch(url)
       .then(checkStatus)
       .then(response => response.json())
   }
 }
 
-function structuredSearch({ fetch, apiKey }) {
+function structuredSearch({ fetch, apiKey, structuredSearchHost }) {
   return options => {
     const optionKeys = keys(options)
     const validOptions = intersection(optionKeys)(STRUCTURED_SEARCH_OPTS)
@@ -147,14 +147,16 @@ function structuredSearch({ fetch, apiKey }) {
         api_key: apiKey,
       },
     )
-    const url = buildUrl(STRUCTURED_SEARCH_ENDPOINT, reqOptions)
+    const host = structuredSearchHost || DEFAULT_HOST
+    const endpoint = getStructuredSearchEndpoint(host)
+    const url = buildUrl(endpoint, reqOptions)
     return fetch(url)
       .then(checkStatus)
       .then(response => response.json())
   }
 }
 
-function reverse({ fetch, apiKey }) {
+function reverse({ fetch, apiKey, reverseHost }) {
   return options => {
     if (!options['point.lat'] || !options['point.lon']) {
       return Promise.reject(
@@ -178,11 +180,29 @@ function reverse({ fetch, apiKey }) {
         api_key: apiKey,
       },
     )
-    const url = buildUrl(REVERSE_ENDPOINT, reqOptions)
+    const host = reverseHost || DEFAULT_HOST
+    const endpoint = getReverseEndpoint(host)
+    const url = buildUrl(endpoint, reqOptions)
     return fetch(url)
       .then(checkStatus)
       .then(response => response.json())
   }
+}
+
+function getSearchEndpoint(host) {
+  return `${host}/search`
+}
+
+function getStructuredSearchEndpoint(host) {
+  return `${host}/search/structured`
+}
+
+function getAutocompleteEndpoint(host) {
+  return `${host}/autocomplete`
+}
+
+function getReverseEndpoint(host) {
+  return `${host}/reverse`
 }
 
 function buildUrl(base, query) {

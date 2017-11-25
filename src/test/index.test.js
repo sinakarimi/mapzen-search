@@ -10,6 +10,7 @@ import {
 } from './fixtures'
 
 const scope = nock('https://search.mapzen.com/v1')
+const scope_override = nock('https://search.some-other-url.com/v1')
 
 describe('mapzen-search', () => {
   it('should validate fetch implementation', () => {
@@ -243,13 +244,38 @@ describe('autocomplete', () => {
     })
   })
 
+  it('should handle successful response when overriding host', () => {
+    expect.assertions(1)
+    const text = 'Coll'
+    const response = autocompleteResponses[text]
+
+    scope_override
+      .get('/autocomplete')
+      .query({
+        api_key: 'api-key',
+        text,
+      })
+      .reply(200, response)
+
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      autocompleteHost: 'https://search.some-other-url.com/v1',
+      fetch,
+    })
+    return mz.autocomplete({
+      text,
+    }).then(data => {
+      expect(data).toMatchObject(response)
+    })
+  })
+
 })
 
 describe('reverse', () => {
   const validOpts = {
     'point.lat': 48.858268,
     'point.lon': 2.294471,
-    size: 2,
+    size: 2
   }
 
   it('should error if missing `point.lat` option', () => {
