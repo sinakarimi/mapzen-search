@@ -106,6 +106,31 @@ describe('search', () => {
       expect(e.message).toMatch('OMG, bad things happened!')
     })
   })
+
+  it('should handle successful response when overriding host', () => {
+    expect.assertions(1)
+    const text = 'Melbourne'
+    const response = searchResponses[text]
+
+    scope_override
+      .get('/search')
+      .query({
+        api_key: 'api-key',
+        text,
+      })
+      .reply(200, response)
+
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      searchHost: 'https://search.some-other-url.com/v1',
+      fetch,
+    })
+    return mz.search({
+      text,
+    }).then(data => {
+      expect(data).toMatchObject(response)
+    })
+  })
 })
 
 describe('searchStructured', () => {
@@ -174,6 +199,32 @@ describe('searchStructured', () => {
     })
     return mz.structuredSearch(validOpts).catch(e => {
       expect(e.message).toMatch('OMG, bad things happened!')
+    })
+  })
+
+  it('should handle successful response when overriding host', () => {
+    expect.assertions(1)
+    const matchQuery = Object.assign(
+      {},
+      validOpts,
+      {
+        api_key: 'api-key',
+      }
+    )
+    const response = structuredSearchResponses['London']
+
+    scope_override
+      .get('/search/structured')
+      .query(matchQuery)
+      .reply(200, response)
+
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      structuredSearchHost: 'https://search.some-other-url.com/v1',
+      fetch,
+    })
+    return mz.structuredSearch(validOpts).then(data => {
+      expect(data).toMatchObject(response)
     })
   })
 })
@@ -353,6 +404,32 @@ describe('reverse', () => {
     })
     return mz.reverse(validOpts).catch(e => {
       expect(e.message).toMatch('OMG, bad things happened!')
+    })
+  })
+
+  it('should handle successful response when overriding host', () => {
+    expect.assertions(1)
+    const matchQuery = Object.assign(
+      {},
+      validOpts,
+      {
+        api_key: 'api-key',
+      }
+    )
+    const response = reverseResponses[`${validOpts['point.lat']}-${validOpts['point.lon']}`]
+
+    scope_override
+      .get('/reverse')
+      .query(matchQuery)
+      .reply(200, response)
+
+    const mz = mapzenSearch({
+      apiKey: 'api-key',
+      reverseHost: 'https://search.some-other-url.com/v1',
+      fetch,
+    })
+    return mz.reverse(validOpts).then(data => {
+      expect(data).toMatchObject(response)
     })
   })
 })
