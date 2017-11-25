@@ -66,3 +66,18 @@ mz.structuredSearch({
   // handle result
 })
 ```
+
+## Pass custom host
+
+If you're self hosting your own Mapzen services (e.g. Pelias) then you'll need to pass in a custom host, e.g.
+
+```
+import mapzenSearch from 'mapzen-search'
+const mz = mapzenSearch({
+  apiKey: 'your-mapzen-api-key',
+  searchHost: 'https://your-self-hosted-address.com,
+  fetch: window.fetch, // or any compliant ponyfill (e.g. https://github.com/developit/unfetch)
+})
+```
+
+The possible host parameters are `searchHost`, `structuredSearchHost`, `autocompleteHost` and `reverseHost`.
